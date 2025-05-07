@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-05T10:23:34.485Z",
+    "end": "2025-05-05T10:23:38.364Z",
+    "duration": 3879,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4c248085-5cc4-49ab-9b5b-b76ec3af5287",
+      "title": "",
+      "fullFile": "cypress/e2e/suscribe-session.cy.ts",
+      "file": "cypress/e2e/suscribe-session.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "24879553-a4a3-4f21-8dc9-99d802826a89",
+          "title": "Création de session par un admin puis inscription par un utilisateur",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "devrait créer une session avec l’admin puis permettre à un utilisateur de s’y inscrire",
+              "fullTitle": "Création de session par un admin puis inscription par un utilisateur devrait créer une session avec l’admin puis permettre à un utilisateur de s’y inscrire",
+              "timedOut": null,
+              "duration": 3832,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// --- Étape 1 : Mock utilisateur admin ---\ncy.intercept('GET', '/me', {\n    statusCode: 200,\n    body: {\n        id: 1,\n        username: 'yoga@studio.com',\n        firstName: 'Admin',\n        lastName: 'ADMIN',\n        isAdmin: true\n    }\n}).as('getAdminMe');\n// Connexion admin\ncy.visit('/login');\ncy.get('input[formControlName=email]').type('yoga@studio.com');\ncy.get('input[formControlName=password]').type('test!1234');\ncy.get('button[type=submit]').click();\ncy.url().should('include', '/sessions');\ncy.contains('Create').click();\ncy.url().should('include', '/sessions/create');\n// Remplissage du formulaire\ncy.get('input[formControlName=name]').type(sessionName);\ncy.get('input[formControlName=date]').type('2025-06-15');\ncy.get('mat-select[formControlName=teacher_id]').click();\ncy.get('mat-option').contains('John Doe').click();\ncy.get('textarea[formControlName=description]').type('Session pour test E2E');\n// Soumission\ncy.get('button[type=submit]').click();\ncy.contains('Session created !').should('exist');\ncy.url().should('include', '/sessions');\n// --- Étape 1.5 : Déconnexion de l'admin ---\ncy.contains('Logout').should('be.visible').click();\n// --- Étape 2 : Connexion utilisateur simple (mock) ---\n// Préparation des mocks AVANT d'aller sur /login\ncy.intercept('GET', '/me', {\n    statusCode: 200,\n    body: {\n        id: 2,\n        username: 'user@studio.com',\n        firstName: 'User',\n        lastName: 'SIMPLE',\n        isAdmin: false\n    }\n}).as('getUserMe');\ncy.intercept('POST', '/api/auth/login', {\n    statusCode: 200,\n    body: { token: 'fake-jwt-token' }\n}).as('loginUser');\ncy.intercept('GET', '/api/sessions', {\n    statusCode: 200,\n    body: [\n        {\n            id: 1,\n            name: sessionName,\n            date: '2025-06-15',\n            teacher: 'John Doe',\n            description: 'Session pour test E2E'\n        }\n    ]\n}).as('getSessions');\n// Revenir à /login et se connecter avec utilisateur simple\ncy.visit('/login');\ncy.get('input[formControlName=email]').type('user@studio.com');\ncy.get('input[formControlName=password]').type('test!1234');\ncy.get('button[type=submit]').click();\n// Vérifications\ncy.url().should('include', '/sessions');\n//cy.contains(sessionName).should('exist');",
+              "err": {},
+              "uuid": "ca2ba906-0cad-4240-9bb0-0ca5140b35e9",
+              "parentUUID": "24879553-a4a3-4f21-8dc9-99d802826a89",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ca2ba906-0cad-4240-9bb0-0ca5140b35e9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3832,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
