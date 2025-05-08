@@ -15,32 +15,33 @@
 ### 📂 Cloner le projet
 
 ```bash
-git clone https://github.com/ton-utilisateur/yoga-app.git
-cd yoga-app
+git clone https://github.com/wsrahmanbalde/Projet4TestApplication.git
+cd Projet4TestApplication/Testez-une-application-full-stack
 ```
 
 ---
 
 ## 🗃️ Installation de la base de données
 
-> La base de données MySQL est configurée automatiquement par Spring Boot via le fichier `application.yml` ou `application.properties`.
+> La base de données MySQL est configurée automatiquement par Spring Boot via le fichier `application.properties`.
 
-Assure-toi que :
+Assurez-vous que :
 - MySQL est installé et fonctionne.
 - Le fichier de configuration Spring contient les bonnes informations :
 
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/yoga
+    url: jdbc:mysql://localhost:3306/test
     username: root
     password: root
 ```
 
-⚠️ Crée la base de données vide `yoga` si elle n’est pas auto-générée :
+⚠️ Crée la base de données vide `test` si elle n’est pas auto-générée :
 ```sql
-CREATE DATABASE yoga;
+CREATE DATABASE test;
 ```
+Crée les table a partir du fichié `data.sql` qui contient l'ensemble des tables necessaires pour le projet et une insertion des données administrateur.
 
 ---
 
@@ -146,19 +147,6 @@ Les captures d’écran des rapports de couverture sont disponibles dans le doss
 - ✅ Couverture Frontend (Jest)
 - ✅ Couverture End-to-End (Cypress)
 - ✅ Couverture Backend (Jacoco)
-
----
-
-## ✅ Vérification finale
-
-Avant soumission, vous pouvez tester les instructions du README :
-
-```bash
-git clone https://github.com/ton-utilisateur/yoga-app.git test-readme
-cd test-readme
-```
-
-Puis reprendre les étapes d’installation.
 
 ---
 
