@@ -153,5 +153,4 @@ Les captures d’écran des rapports de couverture sont disponibles dans le doss
 ## 👨‍💻 Auteur
 
 BALDE Abdourahamane  
-Projet de session – Yoga App  
-UQAM – DESS en génie logiciel
+Projet de session – Yoga App
