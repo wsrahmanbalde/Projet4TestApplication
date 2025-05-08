@@ -1,134 +1,169 @@
-# 🧹 Projet Full Stack Angular / Spring Boot
-
-Ce projet est une application web complète développée avec Angular (frontend) et Spring Boot (backend). Il utilise une base de données MySQL. Des tests unitaires, d’intégration et end-to-end sont mis en place pour garantir la qualité du code.
-
----
+# Yoga App
 
 ## 📦 Technologies utilisées
 
-* **Frontend** : Angular
-* **Backend** : Spring Boot (Java, Maven)
-* **Base de données** : MySQL
-* **Tests Frontend** : Jest (unitaires, intégration, end-to-end)
-* **Tests Backend** : JUnit + Jacoco (unitaires, intégration)
+- **Frontend** : Angular 14
+- **Backend** : Spring Boot (Java)
+- **Base de données** : MySQL
+- **Tests Front-end** : Jest (unitaires, intégration, end-to-end avec Cypress)
+- **Tests Back-end** : JUnit (unitaires, intégration), Jacoco (couverture)
 
 ---
 
 ## 🛠️ Installation
 
-### 🔗 Prérequis
-
-* [Node.js](https://nodejs.org/)
-* [Angular CLI](https://angular.io/cli)
-* [Java 17+](https://adoptium.net/)
-* [Maven 3.9+](https://maven.apache.org/)
-* [MySQL](https://www.mysql.com/)
-
----
-
-## 📔️ Base de données
-
-La base de données est initialisée automatiquement par Spring Boot via la configuration `application.yml`.
-
-### Par défaut :
-
-* **Nom de la base** : `test`
-* **Utilisateur** : `root`
-* **Mot de passe** : `root`
-
-Assurez-vous que les informations sont correctes dans le fichier `src/main/resources/application.yml`.
-
----
-
-## ⚙️ Installation du backend
+### 📂 Cloner le projet
 
 ```bash
-cd backend/
+git clone https://github.com/ton-utilisateur/yoga-app.git
+cd yoga-app
+```
+
+---
+
+## 🗃️ Installation de la base de données
+
+> La base de données MySQL est configurée automatiquement par Spring Boot via le fichier `application.yml` ou `application.properties`.
+
+Assure-toi que :
+- MySQL est installé et fonctionne.
+- Le fichier de configuration Spring contient les bonnes informations :
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/yoga
+    username: root
+    password: root
+```
+
+⚠️ Crée la base de données vide `yoga` si elle n’est pas auto-générée :
+```sql
+CREATE DATABASE yoga;
+```
+
+---
+
+## ⚙️ Installation du backend (Spring Boot)
+
+```bash
+cd back
 mvn clean install
+```
+
+---
+
+## 💻 Installation du frontend (Angular)
+
+```bash
+cd front
+npm install
+npm start
+```
+
+---
+
+## 🚀 Lancer l'application
+
+### Backend
+
+```bash
+cd back
 mvn spring-boot:run
 ```
 
----
-
-## 💻 Installation du frontend
+### Frontend
 
 ```bash
-cd frontend/
-npm install
-ng serve
+cd front
+npm start
 ```
 
-L'application sera accessible à [http://localhost:4200](http://localhost:4200)
-
----
-
-## ✅ Lancer les tests
-
-### 🔹 Tests Frontend (Jest)
-
-#### ➔ Tests unitaires & d’intégration :
-
-```bash
-npm run test
-```
-
-#### ➔ Tests end-to-end :
-
-```bash
-npm run test:e2e
-```
-
-> Assurez-vous que l'application est lancée avant d’exécuter les tests E2E.
+L’application sera disponible sur :  
+🔗 `http://localhost:4200`
 
 ---
 
-## 📊 Rapports de couverture (Frontend)
+## 🧪 Lancer les tests
+
+### ✅ Tests unitaires et intégration (Front - Jest)
 
 ```bash
+cd front
 npm run test -- --coverage
 ```
 
-Les rapports seront générés dans le dossier `coverage/`.
-
-Ouvrir `coverage/index.html` dans un navigateur.
-
----
-
-## 🔺 Tests Backend (JUnit + Jacoco)
+### ✅ Tests end-to-end (Front - Cypress)
 
 ```bash
-mvn clean test
-mvn jacoco:report
+cd front
+npm run test:coverage
+npm run e2e:coverage
 ```
 
-Le rapport de couverture sera généré dans :
-`target/site/jacoco/index.html`
+### ✅ Tests unitaires et intégration (Back - JUnit)
 
----
-
-## 📁 Structure du projet
-
-```
-├── backend/
-│   ├── src/
-│   └── pom.xml
-├── frontend/
-│   ├── src/
-│   └── angular.json
-└── README.md
+```bash
+cd back
+mvn test
 ```
 
 ---
 
-## 📌 Bonnes pratiques
+## 📊 Générer les rapports de couverture
 
-* Cloner le projet dans un nouveau dossier pour tester toutes les instructions du README.
-* Vérifier les versions de Java, Node.js et MySQL.
-* Adapter les ports ou chemins si nécessaire.
+### 🧩 Couverture Frontend (Jest)
+
+- Un rapport HTML est généré dans :
+```bash
+front/coverage/lcov-report/index.html
+```
+
+### 🧩 Couverture End-to-End (Cypress)
+
+- Un rapport HTML est généré dans :
+```bash
+front/coverage/lcov-report/index.html
+```
+
+### 🧩 Couverture Backend (Jacoco)
+
+- Un rapport HTML est généré dans :
+```bash
+back/target/site/jacoco/index.html
+```
 
 ---
 
-## ✉️ Auteur
+## 🖼️ Captures d’écran
 
-Ce projet a été développé dans le cadre d’une formation.
-N'hésitez pas à me contacter pour toute question ou suggestion.
+Les captures d’écran des rapports de couverture sont disponibles dans le dossier :
+
+```bash
+/docs/screenshots
+```
+
+- ✅ Couverture Frontend (Jest)
+- ✅ Couverture End-to-End (Cypress)
+- ✅ Couverture Backend (Jacoco)
+
+---
+
+## ✅ Vérification finale
+
+Avant soumission, vous pouvez tester les instructions du README :
+
+```bash
+git clone https://github.com/ton-utilisateur/yoga-app.git test-readme
+cd test-readme
+```
+
+Puis reprendre les étapes d’installation.
+
+---
+
+## 👨‍💻 Auteur
+
+BALDE Abdourahamane  
+Projet de session – Yoga App  
+UQAM – DESS en génie logiciel
