@@ -107,6 +107,7 @@ npm run e2e:coverage
 ```bash
 cd back
 mvn test
+ou  mvn clean test
 ```
 
 ---
@@ -132,6 +133,10 @@ front/coverage/lcov-report/index.html
 - Un rapport HTML est généré dans :
 ```bash
 back/target/site/jacoco/index.html
+
+Pour ouvrir le rapport: 
+lancer en ligne de commande : open target/site/jacoco/index.html
+
 ```
 
 ---
