@@ -98,7 +98,7 @@ npm run test -- --coverage
 
 ```bash
 cd front
-npm run test:coverage
+Pour lancer tout les tests e2e : npm run e2e:all
 npm run e2e:coverage
 ```
 
