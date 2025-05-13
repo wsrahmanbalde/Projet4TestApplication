@@ -100,6 +100,7 @@ npm run test -- --coverage
 cd front
 Pour lancer tout les tests e2e : npm run e2e:all
 npm run e2e:coverage
+npm run cypress:open
 ```
 
 ### ✅ Tests unitaires et intégration (Back - JUnit)
