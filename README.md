@@ -98,8 +98,9 @@ npm run test -- --coverage
 
 ```bash
 cd front
-npm run test:coverage
+Pour lancer tout les tests e2e : npm run e2e:all
 npm run e2e:coverage
+npm run cypress:open
 ```
 
 ### ✅ Tests unitaires et intégration (Back - JUnit)
@@ -107,6 +108,7 @@ npm run e2e:coverage
 ```bash
 cd back
 mvn test
+ou  mvn clean test
 ```
 
 ---
@@ -132,6 +134,10 @@ front/coverage/lcov-report/index.html
 - Un rapport HTML est généré dans :
 ```bash
 back/target/site/jacoco/index.html
+
+Pour ouvrir le rapport: 
+lancer en ligne de commande : open target/site/jacoco/index.html
+
 ```
 
 ---
